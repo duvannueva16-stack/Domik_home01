@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Luces · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">Luces</h2>
+  <p class="pagina__sub">{{ luces|length }} registradas</p>
+  <a href="{% url 'crear_luz' %}">+ Nueva luz</a>
+</article>
+
+<div class="lista">
+  {% for l in luces %}
+  <article class="tarjeta item">
+    <svg class="icono icono--grande"><use href="#i-foco"/></svg>
+    <div>
+      <p class="item__nombre">{{ l.dispositivo.nombre }}</p>
+      <p class="item__detalle">{% if l.estado %}Encendida · {{ l.brillo }}%{% else %}Apagada{% endif %}</p>
+      <a href="{% url 'editar_luz' l.id %}">Editar</a> ·
+      <a href="{% url 'eliminar_luz' l.id %}">Eliminar</a>
+    </div>
+  </article>
+  {% empty %}
+  <article class="tarjeta vacio">Aún no hay luces registradas.</article>
+  {% endfor %}
+</div>
+{% endblock %}

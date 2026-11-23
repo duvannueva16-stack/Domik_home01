@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Dispositivos · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">Dispositivos</h2>
+  <p class="pagina__sub">{{ dispositivos|length }} registrados</p>
+  <a href="{% url 'crear_dispositivo' %}">+ Nuevo dispositivo</a>
+</article>
+
+<div class="lista">
+  {% for d in dispositivos %}
+  <article class="tarjeta item">
+    <div>
+      <p class="item__nombre">{{ d.nombre }}</p>
+      <p class="item__detalle">{{ d.clase }} · {{ d.zona.nombre }}</p>
+      <a href="{% url 'editar_dispositivo' d.id %}">Editar</a> ·
+      <a href="{% url 'eliminar_dispositivo' d.id %}">Eliminar</a>
+    </div>
+  </article>
+  {% empty %}
+  <article class="tarjeta vacio">Aún no hay dispositivos registrados.</article>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar dispositivo · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">¿Eliminar {{ dispositivo.nombre }}?</h2>
+  <p class="pagina__sub">También se borrará su luz, sensor o cámara asociada.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'lista_dispositivos' %}">Cancelar</a>
+  </form>
+</article>
+{% endblock %}

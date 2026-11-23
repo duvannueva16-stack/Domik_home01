@@ -1,0 +1,7 @@
+<nav class="nav-inferior" aria-label="Secundaria">
+  <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}activo{% endif %}">
+    <svg class="icono"><use href="#i-casa"/></svg><span>Inicio</span>
+  </a>
+  <a href="#" class="pronto"><svg class="icono"><use href="#i-campana"/></svg><span>Alertas</span></a>
+  <a href="#" class="pronto"><svg class="icono"><use href="#i-reloj"/></svg><span>Rutinas</span></a>
+</nav>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Cámaras · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">Cámaras</h2>
+  <p class="pagina__sub">{{ camaras|length }} registradas</p>
+  <a href="{% url 'crear_camara' %}">+ Nueva cámara</a>
+</article>
+
+<div class="lista">
+   {% for c in camaras %}
+  <article class="tarjeta item item--camara">
+    <svg class="icono icono--grande"><use href="#i-camara"/></svg>
+    <div>
+      <p class="item__nombre">{{ c.dispositivo.nombre }}</p>
+      <p class="item__detalle">{{ c.resolucion }} · {% if c.grabando %}Grabando{% else %}En espera{% endif %}</p>
+      <a href="{% url 'editar_camara' c.id %}">Editar</a> ·
+      <a href="{% url 'eliminar_camara' c.id %}">Eliminar</a>
+    </div>
+    {% if c.stream_url %}
+    <div class="camara__video">
+      <img src="{{ c.stream_url }}" alt="Video en vivo de {{ c.dispositivo.nombre }}"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <p class="camara__sin-senal">Sin señal</p>
+    </div>
+    {% endif %}
+  </article>
+  {% empty %}
+  <article class="tarjeta vacio">Aún no hay cámaras registradas.</article>
+  {% endfor %}
+</div>
+{% endblock %}

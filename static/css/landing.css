@@ -1,0 +1,251 @@
+.landing-body {
+    overflow-x: hidden;
+}
+
+.landing {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 6vw;
+    background: #080817;
+}
+
+/* Fondo con la imagen del apartamento */
+.landing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(180deg, rgba(4,4,15,.55), rgba(4,4,15,.88)),
+        url("img/apartamento.jpg");
+    background-size: cover;
+    background-position: center;
+    animation: roomMove 20s ease-in-out infinite alternate;
+}
+
+/* Barra superior */
+.landing-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.landing-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.landing-logo i {
+    font-size: 32px;
+    color: var(--cyan);
+    filter: drop-shadow(0 0 14px var(--cyan));
+}
+
+.landing-logo b {
+    background: linear-gradient(100deg, var(--purple), var(--blue), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.landing-login {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 30px;
+    background: rgba(5, 5, 20, .8);
+    border: 1px solid rgba(0, 210, 255, .5);
+    backdrop-filter: blur(12px);
+    transition: .3s ease;
+}
+
+.landing-login:hover {
+    color: var(--cyan);
+    box-shadow: 0 0 18px rgba(0, 210, 255, .35);
+}
+
+/* Hero */
+.landing-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 680px;
+    padding: 70px 0 50px;
+    animation: appearLeft 1s ease both;
+}
+
+.landing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #d7d9e9;
+    margin-bottom: 22px;
+}
+
+.landing-badge i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 12px var(--green);
+    animation: pulse 1.8s infinite;
+}
+
+.landing-hero h1 {
+    font-size: clamp(40px, 7vw, 76px);
+    line-height: 1.05;
+    font-weight: 800;
+    text-shadow: 0 0 25px rgba(0, 0, 0, .8);
+}
+
+.landing-hero h1 span {
+    background: linear-gradient(100deg, var(--purple), var(--blue), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.landing-hero p {
+    margin-top: 22px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #dcdff0;
+    max-width: 520px;
+}
+
+.landing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(100deg, var(--purple), var(--blue), var(--cyan));
+    box-shadow: 0 0 28px rgba(0, 150, 255, .4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(0, 200, 255, .55);
+}
+
+.btn-secondary {
+    color: white;
+    background: rgba(5, 5, 20, .75);
+    border: 1px solid rgba(130, 0, 255, .8);
+    backdrop-filter: blur(12px);
+}
+
+.btn-secondary:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+/* Tarjetas de funciones */
+.landing-features {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    animation: appearRight 1s ease both;
+}
+
+.feature-card {
+    padding: 24px 20px;
+    border: 1px solid rgba(110, 70, 255, .65);
+    border-radius: 22px;
+    background: linear-gradient(120deg, rgba(28,22,60,.92), rgba(10,25,50,.92));
+    backdrop-filter: blur(14px);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 24px rgba(0, 210, 255, .25);
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    font-size: 24px;
+    background: rgba(120, 100, 180, .2);
+    margin-bottom: 16px;
+}
+
+.feature-icon.alert {
+    color: #ffae42;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+/* Footer */
+.landing-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+    .landing-features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .landing-features {
+        grid-template-columns: 1fr;
+    }
+
+    .landing-hero {
+        padding: 45px 0 35px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

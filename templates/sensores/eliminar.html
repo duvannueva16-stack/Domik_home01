@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar sensor · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">¿Eliminar {{ sensor.dispositivo.nombre }}?</h2>
+  <p class="pagina__sub">Se borrarán también sus lecturas.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'lista_sensores' %}">Cancelar</a>
+  </form>
+</article>
+{% endblock %}

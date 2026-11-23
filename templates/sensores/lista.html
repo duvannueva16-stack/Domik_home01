@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Sensores · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">Sensores</h2>
+  <p class="pagina__sub">{{ sensores|length }} registrados</p>
+  <a href="{% url 'crear_sensor' %}">+ Nuevo sensor</a>
+</article>
+
+<div class="lista">
+  {% for s in sensores %}
+  <article class="tarjeta item">
+    <svg class="icono icono--cian"><use href="#i-termometro"/></svg>
+    <div>
+      <p class="item__nombre">{{ s.dispositivo.nombre }}</p>
+      <p class="item__detalle">{{ s.mac_address }} · {{ s.topico_mqtt }}</p>
+      <a href="{% url 'editar_sensor' s.id %}">Editar</a> ·
+      <a href="{% url 'eliminar_sensor' s.id %}">Eliminar</a>
+    </div>
+  </article>
+  {% empty %}
+  <article class="tarjeta vacio">Aún no hay sensores registrados.</article>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Domik HOME · Tu hogar, en tus manos</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="landing-body">
+
+<div class="landing">
+
+    <header class="landing-top">
+        <div class="landing-logo">
+            <i class="fa-solid fa-house-chimney"></i>
+            <span>Domik <b>HOME</b></span>
+        </div>
+        <a href="{% url 'login' %}" class="landing-login">
+            <i class="fa-solid fa-right-to-bracket"></i> Ingresar
+        </a>
+    </header>
+
+    <section class="landing-hero">
+        <span class="landing-badge"><i></i> Sistema activo</span>
+        <h1>Tu hogar,<br><span>en tus manos</span></h1>
+        <p>Monitorea la temperatura, la humedad y la calidad del aire de tu apartamento en tiempo real, desde cualquier lugar.</p>
+
+        <div class="landing-actions">
+            <a href="{% url 'login' %}" class="btn-primary">
+                Entrar a mi hogar <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#funciones" class="btn-secondary">Ver funciones</a>
+        </div>
+    </section>
+
+    <section class="landing-features" id="funciones">
+        <article class="feature-card">
+            <div class="feature-icon temperature"><i class="fa-solid fa-temperature-half"></i></div>
+            <h3>Temperatura</h3>
+            <p>Conoce el clima de cada habitación al instante.</p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon humidity"><i class="fa-solid fa-droplet"></i></div>
+            <h3>Humedad</h3>
+            <p>Evita el exceso de humedad y cuida tus espacios.</p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon air"><i class="fa-solid fa-leaf"></i></div>
+            <h3>Calidad del aire</h3>
+            <p>Mide el CO₂ y respira un ambiente más sano.</p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon alert"><i class="fa-regular fa-bell"></i></div>
+            <h3>Alertas</h3>
+            <p>Entérate cuando un sensor se desconecte.</p>
+        </article>
+    </section>
+
+    <footer class="landing-footer">
+        © Domik HOME · Conectando tu hogar
+    </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Editar luz · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">Editar {{ luz.dispositivo.nombre }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+    <a href="{% url 'lista_luces' %}">Cancelar</a>
+  </form>
+</article>
+{% endblock %}

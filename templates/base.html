@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Domik HOME{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+  {% include 'partials/_iconos.html' %}
+
+  <div class="app">
+    {% include 'partials/_menu.html' %}
+
+    <main class="centro">
+      <div class="centro__marca">
+        <svg class="icono icono--logo icono--logo-md"><use href="#i-casa"/></svg>
+        <div>
+          <h1>Domik <span>HOME</span></h1>
+          <p>Tu hogar, en tus manos</p>
+        </div>
+      </div>
+    </main>
+
+    <section class="panel">
+      {% include 'partials/_estado.html' %}
+      {% block panel %}{% endblock %}
+      {% include 'partials/_nav_inferior.html' %}
+    </section>
+  </div>
+</body>
+</html>

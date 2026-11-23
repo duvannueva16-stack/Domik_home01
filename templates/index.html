@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}Inicio · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta bienvenida">
+  <div class="bienvenida__cabecera">
+    <div>
+      <p class="ubicacion"><span class="punto"></span>{{ apartamento|default:"Mi apartamento" }}</p>
+      <h2>Hola, {{ nombre|default:"bienvenido" }} <span class="mano">👋</span></h2>
+    </div>
+    <div class="avatar avatar--lg">{{ iniciales|default:"DH" }}</div>
+  </div>
+
+  <div class="dispositivos">
+    <p class="dispositivos__titulo"><strong>{{ conectados|default:"–" }}</strong> de {{ total|default:"–" }} dispositivos conectados</p>
+    <div class="cuadros">
+      {% for c in cuadros %}<span class="{{ c }}"></span>{% endfor %}
+    </div>
+    <p class="sin-conexion">
+      <span class="check"><svg class="icono"><use href="#i-check"/></svg></span>
+      {% if sin_conexion %}Sin conexión: {{ sin_conexion }}{% else %}Todos los dispositivos conectados{% endif %}
+    </p>
+  </div>
+</article>
+
+<article class="tarjeta metricas">
+  <div class="metrica">
+    <svg class="icono icono--cian"><use href="#i-termometro"/></svg>
+    <div><p class="metrica__valor">{{ temperatura|default:"–" }} <small>°C</small></p><p class="metrica__nombre">Temperatura</p></div>
+  </div>
+  <div class="metrica">
+    <svg class="icono icono--cian"><use href="#i-gota"/></svg>
+    <div><p class="metrica__valor">{{ humedad|default:"–" }} <small>%</small></p><p class="metrica__nombre">Humedad</p></div>
+  </div>
+  <div class="metrica">
+    <svg class="icono icono--verde"><use href="#i-hoja"/></svg>
+    <div><p class="metrica__valor">{{ co2|default:"–" }} <small>ppm</small></p><p class="metrica__nombre">CO<sub>2</sub></p></div>
+  </div>
+</article>
+
+<h3 class="titulo-modulos">
+  <span class="cuatro-cuadros"><i></i><i></i><i></i><i></i></span>
+  Módulos
+</h3>
+
+<div class="modulos">
+  <a href="{% url 'luces' %}" class="modulo modulo--morado">
+    <svg class="icono icono--grande"><use href="#i-foco"/></svg>
+    <div><p class="modulo__nombre">Luces</p><p class="modulo__detalle">{{ luces_on|default:"–" }} de {{ luces_total|default:"–" }} encendidas</p></div>
+    <span class="flecha"><svg class="icono"><use href="#i-flecha"/></svg></span>
+  </a>
+  <a href="{% url 'sensores' %}" class="modulo modulo--cian">
+    <svg class="icono icono--grande"><use href="#i-termometro"/></svg>
+    <div><p class="modulo__nombre">Sensores</p><p class="modulo__detalle">{{ sensores_off|default:"0" }} sin conexión</p></div>
+    <span class="flecha"><svg class="icono"><use href="#i-flecha"/></svg></span>
+  </a>
+  <a href="{% url 'camaras' %}" class="modulo modulo--morado">
+    <svg class="icono icono--grande"><use href="#i-camara"/></svg>
+    <div><p class="modulo__nombre">Cámaras</p><p class="modulo__detalle">{{ camaras_grabando|default:"0" }} grabando</p></div>
+    <span class="flecha"><svg class="icono"><use href="#i-flecha"/></svg></span>
+  </a>
+  <div class="modulo modulo--cian modulo--off">
+    <svg class="icono icono--grande"><use href="#i-video"/></svg>
+    <div><p class="modulo__nombre">Videoportero</p><p class="modulo__detalle">Próximamente</p></div>
+  </div>
+</div>
+{% endblock %}

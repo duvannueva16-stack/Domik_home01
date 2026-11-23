@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Sensores · Domik HOME{% endblock %}
+
+{% block panel %}
+<article class="tarjeta">
+  <h2 class="pagina__titulo">Sensores</h2>
+  <p class="pagina__sub">{{ lecturas|length }} lecturas recientes</p>
+  <a href="{% url 'lista_sensores' %}">Gestionar sensores</a>
+</article>
+
+<div class="lista">
+  {% for r in lecturas %}
+  <article class="tarjeta item">
+    <svg class="icono icono--cian"><use href="#i-termometro"/></svg>
+    <div>
+      <p class="item__nombre">{{ r.sensor.dispositivo.nombre }}</p>
+      <p class="item__detalle">{{ r.tipo_magnitud }}: {{ r.valor }} {{ r.unidad_medida }}</p>
+    </div>
+  </article>
+  {% empty %}
+  <article class="tarjeta vacio">Aún no hay lecturas registradas.</article>
+  {% endfor %}
+</div>
+{% endblock %}

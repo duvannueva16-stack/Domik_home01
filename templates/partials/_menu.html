@@ -1,0 +1,35 @@
+{% with u=request.resolver_match.url_name %}
+<aside class="menu">
+  <div class="menu__marca">
+    <svg class="icono icono--logo"><use href="#i-casa"/></svg>
+    <p class="menu__nombre">Domik <span>HOME</span></p>
+    <p class="menu__lema">Tu hogar, en tus manos
+      <svg class="icono icono--xs"><use href="#i-casa"/></svg>
+    </p>
+  </div>
+
+  <nav class="menu__nav" aria-label="Principal">
+    <a href="{% url 'index' %}" class="{% if u == 'index' %}activo{% endif %}"><svg class="icono"><use href="#i-casa"/></svg>Inicio</a>
+    <a href="{% url 'luces' %}" class="{% if u == 'luces' %}activo{% endif %}"><svg class="icono"><use href="#i-foco"/></svg>Luces</a>
+    <a href="{% url 'sensores' %}" class="{% if u == 'sensores' %}activo{% endif %}"><svg class="icono"><use href="#i-wifi"/></svg>Sensores</a>
+    <a href="{% url 'camaras' %}" class="{% if u == 'camaras' %}activo{% endif %}"><svg class="icono"><use href="#i-camara"/></svg>Cámaras</a>
+    <a href="#" class="pronto"><svg class="icono"><use href="#i-video"/></svg>Videoportero <small>Próximamente</small></a>
+    <a href="#" class="pronto"><svg class="icono"><use href="#i-barras"/></svg>Consumo <small>Próximamente</small></a>
+    <a href="#" class="pronto"><svg class="icono"><use href="#i-candado"/></svg>Accesos <small>Próximamente</small></a>
+    <a href="#" class="pronto"><svg class="icono"><use href="#i-mic"/></svg>Rutinas y voz <small>Próximamente</small></a>
+    <a href="#" class="pronto"><svg class="icono"><use href="#i-campana"/></svg>Alertas <small>Próximamente</small></a>
+  </nav>
+    <form method="post" action="{% url 'logout' %}" class="menu__salir">
+    {% csrf_token %}
+    <button type="submit">Cerrar sesión</button>
+  </form>
+
+  <div class="menu__estado">
+    <svg class="icono icono--logo icono--logo-sm"><use href="#i-casa"/></svg>
+    <div>
+      <p class="menu__estado-titulo">Domik HOME <span class="punto"></span></p>
+      <p class="menu__estado-texto">Conectando tu hogar...</p>
+    </div>
+  </div>
+</aside>
+{% endwith %}
